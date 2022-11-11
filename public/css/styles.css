@@ -1,0 +1,255 @@
+/* https://preview.redd.it/k0xona5ab5g31.png?auto=webp&s=98a9a4cc5817bc47290687bab0e9050b60654387 */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:is(ul, ol)[class] {
+  list-style: none;
+}
+
+img {
+  display: block;
+}
+
+img[width][height] {
+  max-width: 100%;
+  height: auto;
+}
+
+.sr-only {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+html {
+  --color-primary: #efc851;
+  --color-text: #f4ecd9;
+  --color-body-bg: hsl(0, 0%, 8%);
+  --color-accent: #7dfc30;
+  --color-danger: #c24c48;
+
+  --size-sm: 0.875rem;
+  --size-base: 1rem;
+  --size-md: 1.125rem;
+  --size-lg: 1.25rem;
+  --size-xl: 1.75rem;
+  --size-2xl: 2rem;
+  --size-3xl: 2.25rem;
+
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 32px;
+  --spacing-8: 48px;
+  --spacing-9: 64px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Kreon, Georgia, serif;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text);
+  background-color: var(--color-body-bg);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  text-shadow: 0.05em 0.05em black;
+}
+
+main {
+  padding: var(--spacing-4);
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* Color utils */
+.color-primary {
+  color: var(--color-primary);
+}
+.color-text {
+  color: var(--color-text);
+}
+.color-accent {
+  color: var(--color-accent);
+}
+
+/* Sizing utils */
+small,
+.size-sm {
+  font-size: var(--size-sm);
+}
+body,
+.size-base {
+  line-height: 1.5;
+  font-size: var(--size-base);
+}
+h3,
+.size-md {
+  font-size: var(--size-md);
+}
+h2,
+.size-lg {
+  font-size: var(--size-lg);
+}
+h1,
+.size-xl {
+  line-height: 1.2;
+  font-size: var(--size-xl);
+}
+
+/* Components */
+
+section {
+  margin-block: var(--spacing-4);
+}
+
+section header > * {
+  display: inline-block;
+}
+
+.run-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--spacing-4);
+}
+
+.run-stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  column-gap: 2ch;
+}
+
+.run-outcome {
+  letter-spacing: 1.5px;
+}
+
+.run-date {
+  margin-inline-end: auto;
+}
+
+.list {
+  padding-inline-start: var(--spacing-4);
+}
+
+.cards {
+  padding-top: var(--spacing-2);
+  columns: 1;
+}
+@media (min-width: 400px) {
+  .cards {
+    columns: 2;
+  }
+}
+@media (min-width: 500px) {
+  .cards {
+    columns: 3;
+  }
+}
+
+.card {
+  text-overflow: ellipsis;
+  max-height: 1.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Cards with a type and rarity (which should be all cards) get an icon via a pseudo-element */
+.card[data-type][data-rarity]::before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  aspect-ratio: 1;
+  margin-inline-end: var(--spacing-2);
+  background-image: var(--bg-rarity);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+/* Rarity indicators */
+.card[data-rarity="common"]::before {
+  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Common.png),
+    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Blue.png),
+    url(https://baalorlord.tv/static/card/Back_Blue.png);
+}
+.card[data-rarity="uncommon"]::before {
+  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Uncommon.png),
+    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Blue.png),
+    url(https://baalorlord.tv/static/card/Back_Blue.png);
+}
+.card[data-rarity="rare"]::before {
+  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Rare.png),
+    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Blue.png),
+    url(https://baalorlord.tv/static/card/Back_Blue.png);
+}
+.card[data-rarity="curse"]::before {
+  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Common.png),
+    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Curse.png),
+    url(https://baalorlord.tv/static/card/Back_Curse.png);
+}
+
+/* Card type backgrounds */
+.card[data-type="power"]::before {
+  --bg-type: url(https://baalorlord.tv/static/card/Type_Power.png);
+}
+.card[data-type="skill"]::before {
+  --bg-type: url(https://baalorlord.tv/static/card/Type_Skill.png);
+}
+.card[data-type="attack"]::before {
+  --bg-type: url(https://baalorlord.tv/static/card/Type_Attack.png);
+}
+
+/* Upgraded cards */
+.card[data-upgrade-count] {
+  color: var(--color-accent);
+}
+.card[data-upgrade-count]::after {
+  content: "+";
+}
+.card[data-upgrade-count]:not([data-upgrade-count="1"])::after {
+  content: "+" attr(data-upgrade-count);
+}
+
+/* Relics and encounters */
+.relics,
+.encounters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.relics {
+  max-width: 34.75rem;
+}
+
+/* Icons */
+.relic img {
+  width: var(--size-3xl);
+}
+.encounter img {
+  width: var(--size-2xl);
+}
