@@ -1,6 +1,6 @@
 # Slay the Spire Run History (HTML and CSS)
 
-This demo recreates the Slay the Spire run history screen with HTML and CSS.
+This demo recreates the [Slay the Spire](https://store.steampowered.com/app/646570/Slay_the_Spire/) run history screen with HTML and CSS.
 
 The result looks something like this:
 
