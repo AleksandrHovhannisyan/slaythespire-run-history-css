@@ -253,12 +253,13 @@ section header > * {
 }
 
 .relics {
+  gap: var(--spacing-2) var(--spacing-1);
   max-width: 34.75rem;
 }
 
 /* Icons */
 .relic img {
-  width: var(--size-3xl);
+  width: var(--size-2xl);
 }
 .encounter img {
   width: var(--size-2xl);
