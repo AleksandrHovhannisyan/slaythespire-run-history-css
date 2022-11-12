@@ -186,31 +186,43 @@ section header > * {
   width: 1em;
   aspect-ratio: 1;
   margin-inline-end: var(--spacing-2);
-  background-image: var(--bg-rarity);
+  background-image: var(--bg-banner), var(--bg-type), var(--bg-desc), var(--bg-back);
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 
-/* Rarity indicators */
+/* Character-specific backgrounds */
+.ironclad .card::before {
+  --bg-desc: url(https://baalorlord.tv/static/card/Desc_Red.png);
+  --bg-back: url(https://baalorlord.tv/static/card/Back_Red.png);
+}
+.silent .card::before {
+  --bg-desc: url(https://baalorlord.tv/static/card/Desc_Green.png);
+  --bg-back: url(https://baalorlord.tv/static/card/Back_Green.png);
+}
+.defect .card::before {
+  --bg-desc: url(https://baalorlord.tv/static/card/Desc_Blue.png);
+  --bg-back: url(https://baalorlord.tv/static/card/Back_Blue.png);
+}
+.watcher .card::before {
+  --bg-desc: url(https://baalorlord.tv/static/card/Desc_Purple.png);
+  --bg-back: url(https://baalorlord.tv/static/card/Back_Purple.png);
+}
+
+/* Rarity backgrounds */
 .card[data-rarity="common"]::before {
-  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Common.png),
-    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Blue.png),
-    url(https://baalorlord.tv/static/card/Back_Blue.png);
+  --bg-banner: url(https://baalorlord.tv/static/card/Banner_Common.png);
 }
 .card[data-rarity="uncommon"]::before {
-  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Uncommon.png),
-    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Blue.png),
-    url(https://baalorlord.tv/static/card/Back_Blue.png);
+  --bg-banner: url(https://baalorlord.tv/static/card/Banner_Uncommon.png);
 }
 .card[data-rarity="rare"]::before {
-  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Rare.png),
-    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Blue.png),
-    url(https://baalorlord.tv/static/card/Back_Blue.png);
+  --bg-banner: url(https://baalorlord.tv/static/card/Banner_Rare.png);
 }
-.card[data-rarity="curse"]::before {
-  --bg-rarity: url(https://baalorlord.tv/static/card/Banner_Common.png),
-    var(--bg-type), url(https://baalorlord.tv/static/card/Desc_Curse.png),
-    url(https://baalorlord.tv/static/card/Back_Curse.png);
+.card:is([data-rarity="curse"], [data-rarity="special"])::before {
+  --bg-desc: url(https://baalorlord.tv/static/card/Desc_Curse.png);
+  --bg-back: url(https://baalorlord.tv/static/card/Back_Curse.png);
+  --bg-banner: url(https://baalorlord.tv/static/card/Banner_Common.png);
 }
 
 /* Card type backgrounds */
